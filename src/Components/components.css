@@ -1,0 +1,19 @@
+.custom-scrollbar::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4); 
+    border-radius: 10px; 
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); 
+  }
+  
+  /* For Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin; 
+    scrollbar-color: rgba(0, 0, 0, 0.4) rgba(0, 0, 0, 0.1); 
+  }
+  
