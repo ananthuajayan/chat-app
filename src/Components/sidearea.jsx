@@ -1,8 +1,67 @@
-import React, { useState } from "react";
+import React from "react";
 import "../Components/components.css"
 
-const Sidearea = () => {
-  const [mode, setMode] = useState(false);
+const Sidearea = ({mode,setMode}) => {
+
+  const ConvoList = [
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+         {
+          name:"Ananthu Ajayan",
+          lastMesg:"Last message ....",
+          img:"https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+         },
+  ]
+  
+  
   const themeChange = () => {
     setMode(!mode);
     console.log("hello");
@@ -69,7 +128,7 @@ const Sidearea = () => {
         <div className="w-full relative">
           <input
             type="text"
-            className={`w-full p-4 pl-14 rounded-lg outline-none ${mode? "bg-black":"bg-slate-200"}`}
+            className={`w-full p-4 pl-14 rounded-lg outline-none ${mode? "bg-black text-slate-200":"bg-slate-200"}`}
           />
           <svg
             className="absolute left-4 bottom-2"
@@ -84,26 +143,32 @@ const Sidearea = () => {
         </div>
 
         <div className={` ${mode? "bg-black":"bg-slate-200"}  h-full p-2 rounded-lg overflow-y-auto custom-scrollbar`}>
-          <div className={`p-3 hover:bg-slate-300 rounded-md flex items-center gap-4 align-items: center; justify-between`}>
+          {
+            ConvoList.map((list,index)=>(
+              <div key={index} className={`p-3 ${mode? "hover:bg-slate-700": "hover:bg-slate-300"} rounded-md flex items-center gap-4 align-items: center; justify-between`}>
             <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-full">
               <img
                 className="w-full h-full rounded-full"
-                src="https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+                src={list.img}
                 alt=""
               />
             </div>
             <div>
-              <h3 className={`font-medium ${mode?"text-slate-200":"text-black" }`}>Ananthu Ajayan</h3>
-              <p className={`${mode?"text-slate-200":"text-black" }`}>Last message ....</p>
+              <h3 className={`font-medium ${mode?"text-slate-200":"text-black" }`}>{list.name}</h3>
+              <p className={`${mode?"text-slate-200":"text-black" }`}>{list.lastMesg}</p>
             </div>
             </div>
            
             <div className="flex items-center flex-col">
-              <p className="text-xs">09/12/2024</p>
-              <p className="text-xs">12:15</p>
+              <p className={`${mode?"text-slate-200":"text-black" } text-xs`}>09/12/2024</p>
+              <p className={`${mode?"text-slate-200":"text-black" } text-xs`}>12:15</p>
             </div>
           </div>
+            ))
+          }
+          
+        
        
         </div>
       </div>

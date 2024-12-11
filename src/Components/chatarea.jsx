@@ -1,10 +1,13 @@
 import React from 'react'
+import Outgoing from './outgoing-messages'
+import Incoming from './Incoming-messages'
+import "../Components/components.css"
 
-const Chatarea = () => {
+const Chatarea = ({mode,setMode}) => {
   return (
     <>
         <div className='hidden md:w-2/3 md:flex w-ful md:h-full h-heightdef rounded-sm flex-col gap-4'>
-        <div className="flex w-full justify-between  bg-slate-200 px-2 py-2 rounded-lg">
+        <div className={`flex w-full justify-between ${mode? "bg-black":"bg-slate-200"} px-2 py-2 rounded-lg`}>
         <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-full">
               <img
@@ -14,14 +17,22 @@ const Chatarea = () => {
               />
             </div>
             <div>
-              <h3 className="font-medium">Ananthu Ajayan</h3>
-              <p>Online</p>
+              <h3 className={`font-medium ${mode? "text-slate-200":"text-black"}`}>Ananthu Ajayan</h3>
+              <p className={` ${mode? "text-slate-200":"text-black"}`}>Online</p>
             </div>
             </div>
           
         </div>
-        <div className='h-full  bg-slate-200 rounded-lg overflow-y-auto '>
-          Chat area
+        <div className='h-full  bg-slate-200 rounded-lg overflow-y-auto p-2 custom-scrollbar flex flex-col gap-6'>
+          <div className='flex w-full justify-start'>
+            <Outgoing/>
+          </div>
+          <div className='flex w-full justify-end'>
+            <Incoming/>
+          </div>
+        </div>
+        <div className='w-full relative'>
+          <input type="text" placeholder='Text here....' className='w-full rounded-lg p-3 pl-5  pr-16 outline-none border-none'/>
         </div>
       </div>
     </>
