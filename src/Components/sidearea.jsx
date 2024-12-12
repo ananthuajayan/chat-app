@@ -1,7 +1,13 @@
 import React from "react";
 import "../Components/components.css"
+import { useSelector,useDispatch } from "react-redux";
+import { toggleTheme } from "../Features/themeSlice";
 
-const Sidearea = ({mode,setMode}) => {
+const Sidearea = () => {
+  const modes = useSelector(state=>state.theme.mode)
+  const dispatch = useDispatch();
+  console.log(modes,"hello");
+  
 
   const ConvoList = [
          {
@@ -61,15 +67,14 @@ const Sidearea = ({mode,setMode}) => {
          },
   ]
   
-  
   const themeChange = () => {
-    setMode(!mode);
+    dispatch(toggleTheme)
     console.log("hello");
   };
   return (
     <>
       <div className="md:w-1/3 w-full h-full rounded-sm gap-4 flex flex-col">
-        <div className={`flex w-full justify-between ${mode? "bg-black":"bg-slate-200"}  px-2 py-2 rounded-lg`}>
+        <div className={`flex w-full justify-between ${modes ==="light"? "bg-black":"bg-slate-200"}  px-2 py-2 rounded-lg`}>
         <div className="w-14 h-14 rounded-full">
               <img
                 className="w-full h-full rounded-full"
@@ -98,7 +103,7 @@ const Sidearea = ({mode,setMode}) => {
             >
               <path d="M820-300q-25 0-42.5-17.5T760-360v-100q0-25 17.5-42.5T820-520q25 0 42.5 17.5T880-460v100q0 25-17.5 42.5T820-300Zm-20 140v-62q-51-8-85.5-46.5T680-360h40q0 42 29 71t71 29q42 0 71-29t29-71h40q0 53-34.5 91.5T840-222v62h-40ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q14 0 27.5 2t26.5 7q-26 31-40 69.5T360-640q0 43 14 81.5t40 69.5q-13 5-26.5 7t-27.5 2ZM40-160v-111q0-34 17-63t47-44q38-20 82.5-34.5T284-435q-40 28-62 71t-22 93v111H40Zm560-320q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T680-640q0-33-23.5-56.5T600-720q-33 0-56.5 23.5T520-640q0 33 23.5 56.5T600-560ZM280-160v-111q0-34 17-63t47-44q51-26 115.5-44T600-440q12 0 23.5.5T646-438q-10 18-16.5 37.5T621-360h-21q-72 0-127.5 18T381-306q-10 5-15.5 14.5T360-271v31h287q15 26 37 46t49 34H280Zm320-480Zm0 400Z" />
             </svg>
-            {mode ? (
+            {modes==="dark" ? (
               <svg
                 onClick={themeChange}
                 className=" hover:fill-blue-900"
@@ -128,7 +133,7 @@ const Sidearea = ({mode,setMode}) => {
         <div className="w-full relative">
           <input
             type="text"
-            className={`w-full p-4 pl-14 rounded-lg outline-none ${mode? "bg-black text-slate-200":"bg-slate-200"}`}
+            className={`w-full p-4 pl-14 rounded-lg outline-none ${modes==="light"? "bg-black text-slate-200":"bg-slate-200"}`}
           />
           <svg
             className="absolute left-4 bottom-2"
@@ -142,10 +147,10 @@ const Sidearea = ({mode,setMode}) => {
           </svg>
         </div>
 
-        <div className={` ${mode? "bg-black":"bg-slate-200"}  h-full p-2 rounded-lg overflow-y-auto custom-scrollbar`}>
+        <div className={` ${modes==="light"? "bg-black":"bg-slate-200"}  h-full p-2 rounded-lg overflow-y-auto custom-scrollbar`}>
           {
             ConvoList.map((list,index)=>(
-              <div key={index} className={`p-3 ${mode? "hover:bg-slate-700": "hover:bg-slate-300"} rounded-md flex items-center gap-4 align-items: center; justify-between`}>
+              <div key={index} className={`p-3 ${modes==="dark"? "hover:bg-slate-700": "hover:bg-slate-300"} rounded-md flex items-center gap-4 align-items: center; justify-between`}>
             <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-full">
               <img
@@ -155,14 +160,14 @@ const Sidearea = ({mode,setMode}) => {
               />
             </div>
             <div>
-              <h3 className={`font-medium ${mode?"text-slate-200":"text-black" }`}>{list.name}</h3>
-              <p className={`${mode?"text-slate-200":"text-black" }`}>{list.lastMesg}</p>
+              <h3 className={`font-medium ${modes==="dark"?"text-slate-200":"text-black" }`}>{list.name}</h3>
+              <p className={`${modes==="dark"?"text-slate-200":"text-black" }`}>{list.lastMesg}</p>
             </div>
             </div>
            
             <div className="flex items-center flex-col">
-              <p className={`${mode?"text-slate-200":"text-black" } text-xs`}>09/12/2024</p>
-              <p className={`${mode?"text-slate-200":"text-black" } text-xs`}>12:15</p>
+              <p className={`${modes==="dark"?"text-slate-200":"text-black" } text-xs`}>09/12/2024</p>
+              <p className={`${modes==="dark"?"text-slate-200":"text-black" } text-xs`}>12:15</p>
             </div>
           </div>
             ))
