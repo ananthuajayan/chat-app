@@ -1,13 +1,20 @@
 import React from 'react'
 import Outgoing from './outgoing-messages'
 import Incoming from './Incoming-messages'
+import { useSelector,useDispatch } from 'react-redux'
 import "../Components/components.css"
 
 const Chatarea = ({mode,setMode}) => {
+  const dispatch = useDispatch();
+  const modes = useSelector(state=>state.theme.mode);
+  console.log(modes);
+  
+
+
   return (
     <>
         <div className='hidden md:w-2/3 md:flex w-ful md:h-full h-heightdef rounded-sm flex-col gap-4'>
-        <div className={`flex w-full justify-between ${mode? "bg-black":"bg-slate-200"} px-2 py-2 rounded-lg`}>
+        <div className={`flex w-full justify-between ${modes==="light"? "bg-black":"bg-slate-200"} px-2 py-2 rounded-lg`}>
         <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-full">
               <img
@@ -17,8 +24,8 @@ const Chatarea = ({mode,setMode}) => {
               />
             </div>
             <div>
-              <h3 className={`font-medium ${mode? "text-slate-200":"text-black"}`}>Ananthu Ajayan</h3>
-              <p className={` ${mode? "text-slate-200":"text-black"}`}>Online</p>
+              <h3 className={`font-medium ${modes === "light"? "text-slate-200":"text-black"}`}>Ananthu Ajayan</h3>
+              <p className={` ${modes === "light"? "text-slate-200":"text-black"}`}>Online</p>
             </div>
             </div>
           
