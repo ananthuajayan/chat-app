@@ -1,16 +1,13 @@
 import React from 'react'
 import Outgoing from './outgoing-messages'
 import Incoming from './Incoming-messages'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector} from 'react-redux'
 import "../Components/components.css"
 
-const Chatarea = ({mode,setMode}) => {
-  const dispatch = useDispatch();
+const Chatarea = () => {
   const modes = useSelector(state=>state.theme.mode);
   console.log(modes);
   
-
-
   return (
     <>
         <div className='hidden md:w-2/3 md:flex w-ful md:h-full h-heightdef rounded-sm flex-col gap-4'>
@@ -30,7 +27,7 @@ const Chatarea = ({mode,setMode}) => {
             </div>
           
         </div>
-        <div className='h-full  bg-slate-200 rounded-lg overflow-y-auto p-2 custom-scrollbar flex flex-col gap-6'>
+        <div className={`h-full ${modes === "light"? "bg-black":"bg-slate-200"} rounded-lg overflow-y-auto p-2 custom-scrollbar flex flex-col gap-6`}>
           <div className='flex w-full justify-start'>
             <Outgoing/>
           </div>
@@ -39,7 +36,8 @@ const Chatarea = ({mode,setMode}) => {
           </div>
         </div>
         <div className='w-full relative'>
-          <input type="text" placeholder='Text here....' className='w-full rounded-lg p-3 pl-5  pr-16 outline-none border-none'/>
+        <svg xmlns="http://www.w3.org/2000/svg" className='absolute right-5 top-3' height="30px" viewBox="0 -960 960 960" width="30px" fill="#5f6368"><path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/></svg>
+          <input type="text" placeholder='Text here....' className={`${modes==="light"?"bg-black text-slate-200" :"bg-slate-200"} w-full rounded-lg p-3 pl-5  pr-16 outline-none border-none`}/>
         </div>
       </div>
     </>

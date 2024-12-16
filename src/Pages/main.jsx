@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Sidearea from "../Components/sidearea";
 import Chatarea from "../Components/chatarea";
 
